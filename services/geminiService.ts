@@ -1,5 +1,6 @@
+
 import { GoogleGenAI, Type, GenerateContentResponse } from "@google/genai";
-import { ChannelStyle, KeywordResult, NicheResult } from "../types.ts";
+import { ChannelStyle, KeywordResult, NicheResult } from "../types";
 
 export class GeminiService {
   async generateScript(params: {

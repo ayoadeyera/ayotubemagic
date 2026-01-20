@@ -1,8 +1,8 @@
 
 import React, { useState, useRef, useEffect } from 'react';
-import { GeminiService } from '../services/geminiService.ts';
-import { CHANNEL_PRESETS, LENGTH_OPTIONS } from '../constants.tsx';
-import { ChannelStyle, ScriptVersion } from '../types.ts';
+import { GeminiService } from '../services/geminiService';
+import { CHANNEL_PRESETS, LENGTH_OPTIONS } from '../constants';
+import { ChannelStyle, ScriptVersion } from '../types';
 
 const ScriptWriterView: React.FC = () => {
   const [topic, setTopic] = useState('');
