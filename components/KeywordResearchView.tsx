@@ -1,7 +1,6 @@
-
 import React, { useState } from 'react';
-import { GeminiService } from '../services/geminiService.ts';
-import { KeywordResult } from '../types.ts';
+import { GeminiService } from '../services/geminiService';
+import { KeywordResult } from '../types';
 
 const KeywordResearchView: React.FC = () => {
   const [query, setQuery] = useState('');

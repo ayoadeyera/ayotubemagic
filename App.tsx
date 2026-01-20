@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { ToolType } from './types';
 import { ICONS } from './constants';
@@ -56,7 +55,19 @@ const App: React.FC = () => {
              className="w-full flex items-center justify-center p-2 rounded-lg hover:bg-slate-800 text-slate-500"
            >
              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-               {sidebarOpen ? <polyline points="11 17 6 12 11 7"/><line x1="18" y1="17" x2="13" y2="12"/><line x1="18" y1="7" x2="13" y2="12"/> : <polyline points="13 17 18 12 13 7"/><line x1="6" y1="17" x2="11" y2="12"/><line x1="6" y1="7" x2="11" y2="12"/>}
+               {sidebarOpen ? (
+                 <>
+                   <polyline points="11 17 6 12 11 7"/>
+                   <line x1="18" y1="17" x2="13" y2="12"/>
+                   <line x1="18" y1="7" x2="13" y2="12"/>
+                 </>
+               ) : (
+                 <>
+                   <polyline points="13 17 18 12 13 7"/>
+                   <line x1="6" y1="17" x2="11" y2="12"/>
+                   <line x1="6" y1="7" x2="11" y2="12"/>
+                 </>
+               )}
              </svg>
            </button>
         </div>

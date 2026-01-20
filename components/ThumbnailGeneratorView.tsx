@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { GeminiService } from '../services/geminiService.ts';
+import { GeminiService } from '../services/geminiService';
 
 // Local interface definition to avoid global namespace conflicts in AI Studio
 interface AIStudioPlatform {

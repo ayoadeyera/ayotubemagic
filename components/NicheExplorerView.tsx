@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { GeminiService } from '../services/geminiService.ts';
-import { NicheResult } from '../types.ts';
+import { GeminiService } from '../services/geminiService';
+import { NicheResult } from '../types';
 
 const NicheExplorerView: React.FC = () => {
   const [query, setQuery] = useState('');

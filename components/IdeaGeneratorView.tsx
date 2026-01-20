@@ -1,6 +1,5 @@
-
 import React, { useState } from 'react';
-import { GeminiService } from '../services/geminiService.ts';
+import { GeminiService } from '../services/geminiService';
 
 const IdeaGeneratorView: React.FC = () => {
   const [niche, setNiche] = useState('');

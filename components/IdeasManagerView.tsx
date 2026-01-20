@@ -1,6 +1,5 @@
-
 import React, { useEffect, useState, useMemo } from 'react';
-import { ScriptVersion } from '../types.ts';
+import { ScriptVersion } from '../types';
 
 const CATEGORIES = ['Script', 'Idea', 'Research', 'Niche'] as const;
 
