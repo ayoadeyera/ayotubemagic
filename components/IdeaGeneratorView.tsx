@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { GeminiService } from '../services/geminiService';
 
@@ -9,13 +10,14 @@ const IdeaGeneratorView: React.FC = () => {
   const handleGenerate = async () => {
     if (!niche) return;
     setLoading(true);
+    setIdeas([]);
     try {
       const gemini = new GeminiService();
       const result = await gemini.generateIdeas(niche);
       setIdeas(result);
-    } catch (error) {
+    } catch (error: any) {
       console.error(error);
-      alert('Failed to generate ideas.');
+      alert(`Error: ${error.message || 'Failed to generate ideas.'}`);
     } finally {
       setLoading(false);
     }
@@ -37,16 +39,18 @@ const IdeaGeneratorView: React.FC = () => {
           <button
             onClick={handleGenerate}
             disabled={loading || !niche}
-            className="bg-indigo-600 px-8 rounded-2xl font-bold transition-all hover:bg-indigo-500 disabled:bg-slate-800"
+            className="bg-indigo-600 px-8 rounded-2xl font-bold transition-all hover:bg-indigo-500 disabled:bg-slate-800 flex items-center justify-center min-w-[120px]"
           >
-            {loading ? '...' : 'Explore'}
+            {loading ? (
+              <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+            ) : 'Explore'}
           </button>
         </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {ideas.map((idea, idx) => (
-          <div key={idx} className="bg-slate-900/50 border border-slate-800 p-6 rounded-3xl hover:border-indigo-500/50 transition-all group relative overflow-hidden">
+          <div key={idx} className="bg-slate-900/50 border border-slate-800 p-6 rounded-3xl hover:border-indigo-500/50 transition-all group relative overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-500" style={{ animationDelay: `${idx * 100}ms` }}>
             <span className="inline-block px-3 py-1 bg-indigo-600/10 text-indigo-400 rounded-full text-[10px] font-bold uppercase tracking-widest mb-4">Viral Concept #{idx + 1}</span>
             <h3 className="text-lg font-bold mb-2 text-slate-100 group-hover:text-indigo-400 transition-colors">{idea.title}</h3>
             <p className="text-slate-400 text-sm mb-4 leading-relaxed">{idea.description}</p>
@@ -56,6 +60,11 @@ const IdeaGeneratorView: React.FC = () => {
             </div>
           </div>
         ))}
+        {!loading && ideas.length === 0 && niche && (
+           <div className="col-span-full py-12 text-center text-slate-600 italic">
+             No ideas found. Try a broader niche or check your connection.
+           </div>
+        )}
       </div>
     </div>
   );
